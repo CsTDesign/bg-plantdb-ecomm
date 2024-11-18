@@ -36,7 +36,7 @@ export default async function CartRoute() {
   return (
     <div className="max-w-2xl min-h-[55vh] mt-10 mx-auto">
       {
-        cart?.items.length === 0 ? (
+        !cart || !cart.items ? (
           <div className="border border-dashed flex flex-col items-center justify-center min-h-[400px] mt-20 p-8 rounded-lg text-center">
             <div className="bg-primary/10 flex h-20 items-center justify-center rounded-full w-20">
               <ShoppingCart className="h-10 text-primary w-10" />
