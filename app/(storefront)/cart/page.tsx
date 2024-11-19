@@ -55,42 +55,44 @@ export default async function CartRoute() {
           </div>
         ) : (
           <div className="flex flex-col gap-y-10">
-            {cart?.items.map((item) => (
-              <div
-                className="flex"
-                key={item.id}
-              >
-                <div className="h-24 relative sm:h-32 sm:w-32 w-24">
-                  <Image
-                    alt="Product image"
-                    className="object-cover rounded-md"
-                    fill
-                    src={item.imageString}
-                  />
-                </div>
-                <div className="flex font-medium justify-between ml-5 w-full">
-                  <p>{item.name}</p>
-                  <div className="flex flex-col h-full justify-between">
-                    <div className="flex gap-x-2 items-center">
-                      <p>{item.quantity} x</p>
-                      <p>${item.price}</p>
-                    </div>
+            {
+              cart?.items.map((item) => (
+                <div
+                  className="flex"
+                  key={item.id}
+                >
+                  <div className="h-24 relative sm:h-32 sm:w-32 w-24">
+                    <Image
+                      alt="Product image"
+                      className="object-cover rounded-md"
+                      fill
+                      src={item.imageString}
+                    />
+                  </div>
+                  <div className="flex font-medium justify-between ml-5 w-full">
+                    <p>{item.name}</p>
+                    <div className="flex flex-col h-full justify-between">
+                      <div className="flex gap-x-2 items-center">
+                        <p>{item.quantity} x</p>
+                        <p>${item.price}</p>
+                      </div>
 
-                    <form
-                      action={deleteItem}
-                      className="text-end"
-                    >
-                      <input
-                        name="productId"
-                        type="hidden"
-                        value={item.id}
-                      />
-                      <DeleteItemButton />
-                    </form>
+                      <form
+                        action={deleteItem}
+                        className="text-end"
+                      >
+                        <input
+                          name="productId"
+                          type="hidden"
+                          value={item.id}
+                        />
+                        <DeleteItemButton />
+                      </form>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            }
             <div className="mt-10">
               <div className="flex font-medium items-center justify-between">
                 <p>Subtotal:</p>
